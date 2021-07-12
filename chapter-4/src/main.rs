@@ -2,6 +2,7 @@ fn main() {
     step_1();
     step_2();
     step_3();
+    step_4();
 }
 
 fn step_1() {
@@ -25,10 +26,21 @@ fn change(str: &mut String) {
 
 fn step_3() {
     let mut s = String::from("hello");
-
+    s.push_str(", world");
     let r1 = &s; // 問題なし
     let r2 = &s; // 問題なし
     // 一つの変数の参照にmutableとimutableを組み合わせる事はできない。
     // let r3 = &mut s; // 大問題！
     println!("{} {}", r1, r2);
+}
+
+fn step_4() {
+    let reference_to_nothing = dangle();
+    println!("dangle {}", reference_to_nothing);
+}
+
+fn dangle() -> String {
+    let s = String::from("hello");
+
+    s
 }
